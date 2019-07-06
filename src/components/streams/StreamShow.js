@@ -4,6 +4,12 @@ import { fetchStream } from '../../actions';
 
 class StreamShow extends React.Component{
 
+  constructor(props){
+    super(props);
+
+    this.videRef = React.createRef();
+  }
+
   componentDidMount() {
     this.props.fetchStream(this.props.match.params.id);
 
@@ -20,6 +26,7 @@ class StreamShow extends React.Component{
 
     return(
       <div>
+        <video ref={this.videRef} style={{width: '100%'}} controls />
         <h1>{title}</h1>
         <h5>{description}</h5>
       </div>
